@@ -10,7 +10,7 @@ model_force_flag=0
 error_flag=0
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
-NAME_AS_COPY_IF_EXISTS='-FileName<$filename%-c.%le'
+NAME_AS_COPY_IF_EXISTS='-FileName<$basename%-c.%le'
 GET_CONFIG_FILE="-config exiftool.config"
 
 while getopts "drm:s:t:T:M:D:" opt; do
@@ -142,8 +142,9 @@ fi
 if [ $target_flag -eq 1 ]; then
     echo "moving images to $TARGET"
 
-    exiftool -directory=$TARGET \
+    exiftool \
     $GET_CONFIG_FILE \
+    -directory=$TARGET \
     $FILETYPES \
     $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
@@ -153,8 +154,9 @@ fi
 if [ $target_by_date_flag -eq 1 ]; then
     echo "moving images to $TARGET by date"
 
-    exiftool '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
+    exiftool \
     $GET_CONFIG_FILE \
+    '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
     $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
@@ -163,8 +165,9 @@ fi
 if [ $target_by_model_flag -eq 1 ]; then
     echo "moving images to $TARGET by model name"
 
-    exiftool '-directory<'"$TARGET"'/$model' \
+    exiftool \
     $GET_CONFIG_FILE \
+    '-directory<'"$TARGET"'/$model' \
     $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
