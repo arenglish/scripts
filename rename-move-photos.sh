@@ -11,6 +11,7 @@ error_flag=0
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
 NAME_AS_COPY_IF_EXISTS='-FileName<$filename%-c.%le'
+GET_CONFIG_FILE="-config exiftool.config"
 
 while getopts "drm:s:t:T:M:D:" opt; do
   case ${opt} in
@@ -89,6 +90,7 @@ if [ $model_flag -eq 1 ]
 then
   echo "writing model name to photos without model tag: $MODEL..."
   exiftool \
+  $GET_CONFIG_FILE \
   -model="$MODEL" \
   $FILETYPES \
   -if '(not $model)' \
@@ -100,6 +102,7 @@ if [ $model_force_flag -eq 1 ]
 then
   echo "overwriting photo model tags with: $MODEL..."
   exiftool \
+  $GET_CONFIG_FILE \
   -model="$MODEL" \
   $FILETYPES \
   -r \
@@ -112,6 +115,7 @@ then
     echo "Source: $SOURCE"
 
     exiftool \
+    $GET_CONFIG_FILE \
     '-datetimeoriginal<createdate' \
     '-datetimeoriginal<modifydate' \
     '-datetimeoriginal<filemodifydate' \
@@ -126,6 +130,7 @@ then
     echo "renaming media..."
 
     exiftool \
+    $GET_CONFIG_FILE \
     -d %Y-%m-%d_%H-%M-%S \
     '-FileName<${DateTimeOriginal}%-c.%le' \
     '-FileName<${DateTimeOriginal}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
@@ -138,6 +143,7 @@ if [ $target_flag -eq 1 ]; then
     echo "moving images to $TARGET"
 
     exiftool -directory=$TARGET \
+    $GET_CONFIG_FILE \
     $FILETYPES \
     $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
@@ -148,6 +154,7 @@ if [ $target_by_date_flag -eq 1 ]; then
     echo "moving images to $TARGET by date"
 
     exiftool '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
+    $GET_CONFIG_FILE \
     $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
@@ -157,6 +164,7 @@ if [ $target_by_model_flag -eq 1 ]; then
     echo "moving images to $TARGET by model name"
 
     exiftool '-directory<'"$TARGET"'/$model' \
+    $GET_CONFIG_FILE \
     $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
