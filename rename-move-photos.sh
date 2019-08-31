@@ -11,7 +11,7 @@ error_flag=0
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
 
-while getopts "D:drm:s:t:T:M:" opt; do
+while getopts "drm:s:t:T:M:D:" opt; do
   case ${opt} in
     t )
       target_flag=1
