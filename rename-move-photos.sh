@@ -10,6 +10,7 @@ model_force_flag=0
 error_flag=0
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
+NAME_AS_COPY_IF_EXISTS='-FileName<${DateTimeOriginal}%-c.%le'
 
 while getopts "drm:s:t:T:M:D:" opt; do
   case ${opt} in
@@ -138,6 +139,7 @@ if [ $target_flag -eq 1 ]; then
 
     exiftool -directory=$TARGET \
     $FILETYPES \
+    $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
