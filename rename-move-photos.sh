@@ -124,20 +124,18 @@ then
 fi
 
 if [ $target_flag -eq 1 ]; then
-    echo "exporting images to $TARGET\n"
+    echo "movine images to $TARGET\n"
 
     exiftool '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
     -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
-    -o . \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
 
 if [ $target_by_model_flag -eq 1 ]; then
-    echo "exporting images to $TARGET by model name"
-    exiftool '-directory<'"$TARGET"'$model' \
+    echo "movine images to $TARGET by model name"
+    exiftool '-directory<'"$TARGET"'/$model' \
     -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
-    -o . \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
