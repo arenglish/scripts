@@ -1,5 +1,6 @@
 #!/bin/bash
 target_flag=0
+target_by_model_flag=0
 source_flag=0
 date_flag=0
 rename_flag=0
@@ -7,10 +8,14 @@ model_flag=0
 model_force_flag=0
 error_flag=0
 
-while getopts "drm:s:t:M:" opt; do
+while getopts "drm:s:t:T:M:" opt; do
   case ${opt} in
     t )
       target_flag=1
+      TARGET="`eval echo ${OPTARG//>}`"
+      ;;
+    T )
+      target_by_model_flag=1
       TARGET="`eval echo ${OPTARG//>}`"
       ;;
     d )
@@ -44,7 +49,7 @@ while getopts "drm:s:t:M:" opt; do
 done
 shift $((OPTIND -1))
 
-if [[ $target_flag -eq 0 ]] && [[ $source_flag -eq 0 ]] && [[ $rename_flag -eq 0 ]] && [[ $model_flag -eq 0 ]] && [[ $model_force_flag -eq 0 ]] && [[ $date_flag -eq 0 ]]
+if [[ $target_flag -eq 0 ]] && [[ $target_by_model_flag -eq 0 ]] && [[ $source_flag -eq 0 ]] && [[ $rename_flag -eq 0 ]] && [[ $model_flag -eq 0 ]] && [[ $model_force_flag -eq 0 ]] && [[ $date_flag -eq 0 ]]
 then
     echo "no options given"
     exit 1
@@ -122,6 +127,15 @@ if [ $target_flag -eq 1 ]; then
     echo "exporting images to $TARGET\n"
 
     exiftool '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
+    -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF\
+    -o .\
+    -r -i "$TARGET" \
+    "$SOURCE"
+fi
+
+if [ $target_by_model_flag -eq 1 ]; then
+    echo "exporting images to $TARGET by model name"
+    exiftool '-directory<'"$TARGET"'/$model' \
     -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF\
     -o .\
     -r -i "$TARGET" \
