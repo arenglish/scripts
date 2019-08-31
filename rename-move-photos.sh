@@ -136,7 +136,7 @@ fi
 if [ $target_flag -eq 1 ]; then
     echo "moving images to $TARGET"
 
-    exiftool '-directory<'$TARGET \
+    exiftool -directory=$TARGET \
     $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
