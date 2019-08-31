@@ -160,6 +160,7 @@ if [ $target_by_date_flag -eq 1 ]; then
     $GET_CONFIG_FILE \
     '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
     $FILETYPES \
+    $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
@@ -171,6 +172,7 @@ if [ $target_by_model_flag -eq 1 ]; then
     $GET_CONFIG_FILE \
     '-directory<'"$TARGET"'/$model' \
     $FILETYPES \
+    $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
