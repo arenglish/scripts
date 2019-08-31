@@ -14,15 +14,18 @@ FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext T
 while getopts "drm:s:t:T:M:D:" opt; do
   case ${opt} in
     t )
+      # Moves images to specified target directory
       target_flag=1
       TARGET="`eval echo ${OPTARG//>}`"
       ;;
-    D )
-      target_by_date_flag=1
+    T )
+      # Moves images to specified target directory under model directories
+      target_by_model_flag=1
       TARGET="`eval echo ${OPTARG//>}`"
       ;;
-    T )
-      target_by_model_flag=1
+    D )
+      # Moves images to specified target directory under dated directories
+      target_by_date_flag=1
       TARGET="`eval echo ${OPTARG//>}`"
       ;;
     d )
@@ -71,7 +74,7 @@ if [[ ! -d $SOURCE ]] && [[ ! -f $SOURCE ]]; then
     echo "source file or directory doesn't exist... $SOURCE"
     exit 1
 fi
-if [[ $target_flag -eq 1 ]] && [[ ! -d $TARGET ]]; then
+if ([[ $target_flag -eq 1 ]] || [[ $target_by_date_flag -eq 1 ]] || [[ $target_by_model_flag -eq 1 ]]) && [[ ! -d $TARGET ]]; then
     echo "target directory doesn't exist... $TARGET"
     exit 1
 fi
