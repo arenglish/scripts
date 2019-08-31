@@ -1,5 +1,6 @@
 #!/bin/bash
 target_flag=0
+target_by_date_flag=0
 target_by_model_flag=0
 source_flag=0
 date_flag=0
@@ -14,6 +15,10 @@ while getopts "drm:s:t:T:M:" opt; do
   case ${opt} in
     t )
       target_flag=1
+      TARGET="`eval echo ${OPTARG//>}`"
+      ;;
+    D )
+      target_by_date_flag=1
       TARGET="`eval echo ${OPTARG//>}`"
       ;;
     T )
@@ -51,7 +56,7 @@ while getopts "drm:s:t:T:M:" opt; do
 done
 shift $((OPTIND -1))
 
-if [[ $target_flag -eq 0 ]] && [[ $target_by_model_flag -eq 0 ]] && [[ $source_flag -eq 0 ]] && [[ $rename_flag -eq 0 ]] && [[ $model_flag -eq 0 ]] && [[ $model_force_flag -eq 0 ]] && [[ $date_flag -eq 0 ]]
+if [[ $target_by_date_flag -eq 0 ]] && [[ $target_flag -eq 0 ]] && [[ $target_by_model_flag -eq 0 ]] && [[ $source_flag -eq 0 ]] && [[ $rename_flag -eq 0 ]] && [[ $model_flag -eq 0 ]] && [[ $model_force_flag -eq 0 ]] && [[ $date_flag -eq 0 ]]
 then
     echo "no options given"
     exit 1
@@ -126,7 +131,16 @@ then
 fi
 
 if [ $target_flag -eq 1 ]; then
-    echo "movine images to $TARGET\n"
+    echo "moving images to $TARGET"
+
+    exiftool '-directory<'"$TARGET" \
+    $FILETYPES \
+    -r -i "$TARGET" \
+    "$SOURCE"
+fi
+
+if [ $target_by_date_flag -eq 1 ]; then
+    echo "moving images to $TARGET by date"
 
     exiftool '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
     $FILETYPES \
@@ -135,7 +149,7 @@ if [ $target_flag -eq 1 ]; then
 fi
 
 if [ $target_by_model_flag -eq 1 ]; then
-    echo "movine images to $TARGET by model name"
+    echo "moving images to $TARGET by model name"
 
     exiftool '-directory<'"$TARGET"'/$model' \
     $FILETYPES \
