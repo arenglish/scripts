@@ -9,7 +9,7 @@ model_flag=0
 model_force_flag=0
 error_flag=0
 
-exho $PWD
+echo $PWD
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
 NAME_AS_COPY_IF_EXISTS='-FileName<$BaseName%-c.%le'
