@@ -10,7 +10,7 @@ model_force_flag=0
 error_flag=0
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
-NAME_AS_COPY_IF_EXISTS='-FileName<$basename%-c.%le'
+NAME_AS_COPY_IF_EXISTS='-FileName<$BaseName%-c.%le'
 GET_CONFIG_FILE="-config exiftool.config"
 
 while getopts "drm:s:t:T:M:D:" opt; do
