@@ -8,6 +8,8 @@ model_flag=0
 model_force_flag=0
 error_flag=0
 
+FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
+
 while getopts "drm:s:t:T:M:" opt; do
   case ${opt} in
     t )
@@ -79,7 +81,7 @@ then
   echo "writing model name to photos without model tag: $MODEL..."
   exiftool \
   -model="$MODEL" \
-  -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
+  $FILETYPES \
   -if '(not $model)' \
   -r \
   "$SOURCE"
@@ -90,7 +92,7 @@ then
   echo "overwriting photo model tags with: $MODEL..."
   exiftool \
   -model="$MODEL" \
-  -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
+  $FILETYPES \
   -r \
   "$SOURCE"
 fi
@@ -104,7 +106,7 @@ then
     '-datetimeoriginal<createdate' \
     '-datetimeoriginal<modifydate' \
     '-datetimeoriginal<filemodifydate' \
-    -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
+    $FILETYPES \
     -if '(not $datetimeoriginal or ($datetimeoriginal eq "0000:00:00 00:00:00"))' \
     -r \
     "$SOURCE"
@@ -119,7 +121,7 @@ then
     '-FileName<${DateTimeOriginal}%-c.%le' \
     '-FileName<${DateTimeOriginal}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
     '-FileName<${DateTimeOriginal}${subsectimeoriginal;$_.=0 x(3-length)}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
-    -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
+    $FILETYPES \
     -r "$SOURCE"
 fi
 
@@ -127,15 +129,16 @@ if [ $target_flag -eq 1 ]; then
     echo "movine images to $TARGET\n"
 
     exiftool '-Directory<DateTimeOriginal' -d "$TARGET/%Y/%m_%B" \
-    -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
+    $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
 
 if [ $target_by_model_flag -eq 1 ]; then
     echo "movine images to $TARGET by model name"
+
     exiftool '-directory<'"$TARGET"'/$model' \
-    -ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF \
+    $FILETYPES \
     -r -i "$TARGET" \
     "$SOURCE"
 fi
