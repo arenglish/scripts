@@ -15,7 +15,7 @@ FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext T
 NAME_AS_COPY_IF_EXISTS='-FileName<$BaseName%-c.%le'
 GET_CONFIG_FILE="-config $DIR/exiftool.config"
 
-while getopts "drm:s:t:T:M:D:" opt; do
+while getopts "drm:s:t:T:M:D:u" opt; do
   case ${opt} in
     t )
       # Moves images to specified target directory
@@ -38,6 +38,10 @@ while getopts "drm:s:t:T:M:D:" opt; do
       ;;
     r )
       rename_flag=1
+      ;;
+    u )
+      # disable renaming photos to incremented count when target destination already has file with same name
+      NAME_AS_COPY_IF_EXISTS=""
       ;;
     s )
       source_flag=1
