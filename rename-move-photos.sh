@@ -170,8 +170,17 @@ if [ $target_by_date_flag -eq 1 ]; then
 fi
 
 if [ $target_by_model_flag -eq 1 ]; then
-    echo "moving images to $TARGET by model name"
+    MODEL='UNKNOWN'
+    echo "tagging photos without model with UNKNOWN"
+    exiftool \
+    $GET_CONFIG_FILE \
+    -model="$MODEL" \
+    $FILETYPES \
+    -if '(not $model)' \
+    -r \
+    "$SOURCE"
 
+    echo "moving images to $TARGET by model name"
     exiftool \
     $GET_CONFIG_FILE \
     '-directory<'"$TARGET"'/$model' \
