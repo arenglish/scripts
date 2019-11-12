@@ -8,6 +8,7 @@ rename_flag=0
 model_flag=0
 model_force_flag=0
 error_flag=0
+no_rename_by_count_if_duplicate_name_flag=0
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -15,7 +16,7 @@ FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext T
 NAME_AS_COPY_IF_EXISTS='-FileName<$BaseName%-c.%le'
 GET_CONFIG_FILE="-config $DIR/exiftool.config"
 
-while getopts "drm:s:t:T:M:D:u" opt; do
+while getopts "drnm:s:t:T:M:D:u" opt; do
   case ${opt} in
     t )
       # Moves images to specified target directory
@@ -26,6 +27,11 @@ while getopts "drm:s:t:T:M:D:u" opt; do
       # Moves images to specified target directory under model directories
       target_by_model_flag=1
       TARGET="`eval echo ${OPTARG//>}`"
+      ;;
+    n )
+      # Don't rename photos by count if duplicate exists in destination
+      no_rename_by_count_if_duplicate_name_flag=1
+      NAME_AS_COPY_IF_EXISTS=""
       ;;
     D )
       # Moves images to specified target directory under dated directories
