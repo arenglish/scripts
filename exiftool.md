@@ -1,6 +1,7 @@
 ## delete duplicates
 fdupes -rdN .
 
+
 ## rename with model
 exiftool -d %Y%m%d_%H%M%S%%-c '-filename<$datetimeoriginal-${model;}-${filesize;}.%e’ -r .
 exiftool -v -d %Y%m%d_%H%M%S '-Filename<${datetimeoriginal}${subsectimeoriginal;$_.=0 x(3-length)}.%e' -if ‘(not $subsectimeoriginal)’  .
