@@ -96,7 +96,7 @@ if [[ ! -d $SOURCE ]] && [[ ! -f $SOURCE ]]; then
     echo "source file or directory doesn't exist... $SOURCE"
     exit 1
 fi
-if [[ $rename_and_move_flag -eq 1 ]] && ([[ $target_flag -eq 0 ]] && [[ $target_by_date_flag -eq 0 ]]); then
+if [[ $rename_and_move_flag -eq 1 ]] && [[ $target_flag -eq 0 ]]; then
     echo "must specify a target for rename_and_move options"
     exit 1
 fi
@@ -170,10 +170,6 @@ then
     if [ $target_flag -eq 1 ]; then
         TARGET_COMMAND='-directory='$TARGET
     fi
-    if [ $target_by_date_flag -eq 1 ]; then
-        FORMAT='-d '"$TARGET/%Y/%m_%B"
-        TARGET_COMMAND='-Directory<DateTimeOriginal'" $FORMAT"
-    fi
     exiftool \
     $GET_CONFIG_FILE \
     -d %Y-%m-%d_%H-%M-%S \
@@ -183,9 +179,8 @@ then
     $FILETYPES \
     $TARGET_COMMAND \
     -r "$SOURCE"
-fi
-
-if [ $target_flag -eq 1 ]; then
+else
+  if [ $target_flag -eq 1 ]; then
     echo "moving images to $TARGET"
 
     exiftool \
@@ -195,6 +190,7 @@ if [ $target_flag -eq 1 ]; then
     $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
     "$SOURCE"
+fi
 fi
 
 if [ $target_by_date_flag -eq 1 ]; then
