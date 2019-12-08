@@ -16,6 +16,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext TIFF"
 NAME_AS_COPY_IF_EXISTS='-FileName<$BaseName%-c.%le'
+NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND='%-c'
 GET_CONFIG_FILE="-config $DIR/exiftool.config"
 
 while getopts "drnm:s:t:T:RM:D:c:" opt; do
@@ -154,9 +155,9 @@ then
     exiftool \
     $GET_CONFIG_FILE \
     -d %Y-%m-%d_%H-%M-%S \
-    '-FileName<${DateTimeOriginal}%-c.%le' \
-    '-FileName<${DateTimeOriginal}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
-    '-FileName<${DateTimeOriginal}${subsectimeoriginal;$_.=0 x(3-length)}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
+    '-FileName<${DateTimeOriginal}'$NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND'.%le' \
+    '-FileName<${DateTimeOriginal}_${Model;tr/ /_/;s/__+/_/g}'$NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND'.%le' \
+    '-FileName<${DateTimeOriginal}${subsectimeoriginal;$_.=0 x(3-length)}_${Model;tr/ /_/;s/__+/_/g}'$NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND'.%le' \
     $FILETYPES \
     -r "$SOURCE"
 fi
@@ -179,7 +180,6 @@ then
     '-FileName<${DateTimeOriginal}${subsectimeoriginal;$_.=0 x(3-length)}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
     $FILETYPES \
     $TARGET_COMMAND \
-    $NAME_AS_COPY_IF_EXISTS \
     -r "$SOURCE"
 fi
 
