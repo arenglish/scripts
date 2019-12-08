@@ -35,6 +35,7 @@ while getopts "drnm:s:t:T:RM:D:c:" opt; do
       # Don't rename photos by count if duplicate exists in destination
       no_rename_by_count_if_duplicate_name_flag=1
       NAME_AS_COPY_IF_EXISTS=""
+      NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND=""
       ;;
     D )
       # Moves images to specified target directory under dated directories
