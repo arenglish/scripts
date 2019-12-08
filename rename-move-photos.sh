@@ -171,7 +171,7 @@ then
         TARGET_COMMAND='-directory='$TARGET
     fi
     if [ $target_by_date_flag -eq 1 ]; then
-        TARGET_COMMAND='"-Directory<DateTimeOriginal" -d "'$TARGET'/%Y/%m_%B"'
+        TARGET_COMMAND="'-Directory<DateTimeOriginal' -d '"$TARGET"/%Y/%m_%B'"
     fi
     exiftool \
     $GET_CONFIG_FILE \
