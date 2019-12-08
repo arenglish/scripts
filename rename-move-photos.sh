@@ -96,7 +96,7 @@ if [[ ! -d $SOURCE ]] && [[ ! -f $SOURCE ]]; then
     echo "source file or directory doesn't exist... $SOURCE"
     exit 1
 fi
-if [[ $rename_and_move_flag -eq 1 ]] && ([[ $target_flag -eq 0 ]] && [[ $target_by_model_flag -eq 0 ]]); then
+if [[ $rename_and_move_flag -eq 1 ]] && ([[ $target_flag -eq 0 ]] && [[ $target_by_date_flag -eq 0 ]]); then
     echo "must specify a target for rename_and_move options"
     exit 1
 fi
