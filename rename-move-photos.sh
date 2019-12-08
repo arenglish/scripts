@@ -176,9 +176,9 @@ then
     exiftool \
     $GET_CONFIG_FILE \
     -d %Y-%m-%d_%H-%M-%S \
-    '-FileName<${DateTimeOriginal}%-c.%le' \
-    '-FileName<${DateTimeOriginal}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
-    '-FileName<${DateTimeOriginal}${subsectimeoriginal;$_.=0 x(3-length)}_${Model;tr/ /_/;s/__+/_/g}%-c.%le' \
+    '-FileName<${DateTimeOriginal}'$NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND'.%le' \
+    '-FileName<${DateTimeOriginal}_${Model;tr/ /_/;s/__+/_/g}'$NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND'.%le' \
+    '-FileName<${DateTimeOriginal}${subsectimeoriginal;$_.=0 x(3-length)}_${Model;tr/ /_/;s/__+/_/g}'$NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND'.%le' \
     $FILETYPES \
     $TARGET_COMMAND \
     -r "$SOURCE"
