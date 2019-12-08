@@ -6,6 +6,7 @@ source_flag=0
 date_flag=0
 rename_flag=0
 model_flag=0
+compress_flag=0
 model_force_flag=0
 error_flag=0
 no_rename_by_count_if_duplicate_name_flag=0
@@ -16,7 +17,7 @@ FILETYPES="-ext CR2 -ext DNG -ext JPG -ext MP4 -ext MOV -ext WAV -ext PNG -ext T
 NAME_AS_COPY_IF_EXISTS='-FileName<$BaseName%-c.%le'
 GET_CONFIG_FILE="-config $DIR/exiftool.config"
 
-while getopts "drnm:s:t:T:M:D:u" opt; do
+while getopts "drnm:s:t:T:M:D:c:" opt; do
   case ${opt} in
     t )
       # Moves images to specified target directory
@@ -45,10 +46,6 @@ while getopts "drnm:s:t:T:M:D:u" opt; do
     r )
       rename_flag=1
       ;;
-    u )
-      # disable renaming photos to incremented count when target destination already has file with same name
-      NAME_AS_COPY_IF_EXISTS=""
-      ;;
     s )
       source_flag=1
       SOURCE="`eval echo ${OPTARG//>}`"
@@ -62,6 +59,11 @@ while getopts "drnm:s:t:T:M:D:u" opt; do
       # Overwrites model tag with provided model name
       model_force_flag=1
       MODEL="`eval echo ${OPTARG//>}`"
+      ;;
+    c )
+      # Compresses source directory/file to specified location as <(directory/file)-name>.tar.gz archive
+      compress_flag=1
+      COMPRESS_DIRECTORY="`eval echo ${OPTARG//>}`"
       ;;
     \? )
       echo "Invalid option: $OPTARG" 1>&2
@@ -194,6 +196,12 @@ if [ $target_by_model_flag -eq 1 ]; then
     $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
     "$SOURCE"
+fi
+
+if [ $compress_flag -q 1 ]; then
+  ARCHIVE_NAME=$(echo $SOURCE | rev | cut -d '/' -f 1 | rev)
+  ARCHIVE_NAME=$(echo $ARCHIVE_NAME | cut -d '.' -f 1)
+  echo $ARCHIVE_NAME.tar.gz
 fi
 
 exit
