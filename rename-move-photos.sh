@@ -229,7 +229,7 @@ if [ $target_by_model_flag -eq 1 ]; then
     "$SOURCE"
 fi
 
-if [ $compress_flag -q 1 ]; then
+if [ $compress_flag -eq 1 ]; then
   ARCHIVE_NAME=$(echo $SOURCE | rev | cut -d '/' -f 1 | rev)
   ARCHIVE_NAME=$(echo $ARCHIVE_NAME | cut -d '.' -f 1)
   echo $ARCHIVE_NAME.tar.gz
