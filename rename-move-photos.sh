@@ -33,6 +33,7 @@ while getopts "drnm:s:t:T:RM:D:c:" opt; do
       ;;
     n )
       # Don't rename photos by count if duplicate exists in destination
+      echo "-n: Will not move photo that has duplicate name"
       no_rename_by_count_if_duplicate_name_flag=1
       NAME_AS_COPY_IF_EXISTS=""
       NAME_AS_COPY_IF_EXISTS_RENAME_COMMAND=""
@@ -167,9 +168,7 @@ if [ $rename_and_move_flag -eq 1 ]
 then
     echo "renaming and moving media..."
 
-    if [ $target_flag -eq 1 ]; then
-        TARGET_COMMAND='-directory='$TARGET
-    fi
+    TARGET_COMMAND='-directory='$TARGET
     exiftool \
     $GET_CONFIG_FILE \
     -d %Y-%m-%d_%H-%M-%S \
@@ -190,7 +189,7 @@ else
     $NAME_AS_COPY_IF_EXISTS \
     -r -i "$TARGET" \
     "$SOURCE"
-fi
+  fi
 fi
 
 if [ $target_by_date_flag -eq 1 ]; then
