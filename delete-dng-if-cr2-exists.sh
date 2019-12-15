@@ -30,7 +30,7 @@ do
       else
         STRING=$"Deleting DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f"
       fi
-      echo $STRING
+      echo "$STRING"
     fi
   fi
 done
