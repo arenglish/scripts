@@ -26,9 +26,9 @@ do
     FILENAME="${f/$DNG/''}"
     if [[ -f "$FILENAME.cr2" ]]; then
       if [[ $dry_run_flag -eq 1 ]]; then
-        STRING=$"Found DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f"
+        STRING=$'Found DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f'
       else
-        STRING=$"Deleting DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f"
+        STRING=$'Deleting DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f'
       fi
       echo "$STRING"
     fi
