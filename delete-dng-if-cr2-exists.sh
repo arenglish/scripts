@@ -39,13 +39,13 @@ do
       printf "\n$MESSAGE\nCR2: ($(stat --printf="%s" $CR2_FILE) bytes) $CR2_FILE\nDNG: ($(stat --printf="%s" $f) bytes) $f"
 
       if [[ ($(stat --printf="%s" $CR2_FILE) < 10000000) ]]; then
-        printf "WARNING - CR2 file is smaller than 10MB, it may not be valid! Will skip deletion unless forced"
+        printf "\nWARNING - CR2 file is smaller than 10MB, it may not be valid! Will skip deletion unless forced"
       fi
 
       if ( [[ $(stat --printf="%s" $CR2_FILE) -gt 10000000 ]] && [[ $dry_run_flag -eq 0 ]] ) || [[ $force_flag -eq 1 ]]; then
         rm $f
       else
-        print "\n skipped $f because it's CR2 was under 10MB"
+        printf "\n skipped $f because it's CR2 was under 10MB"
       fi
 
       printf "\n"
