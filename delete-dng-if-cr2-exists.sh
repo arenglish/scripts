@@ -17,7 +17,7 @@ while getopts "d" opt; do
 done
 shift $((OPTIND -1))
 
-FILES=./*
+FILES=./**/*
 CR2=".cr2"
 DNG=".dng"
 for f in $FILES
