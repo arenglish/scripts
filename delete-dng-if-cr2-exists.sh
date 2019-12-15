@@ -2,13 +2,13 @@
 
 FILES=./*
 CR2=".cr2"
+DNG=".dng"
 for f in $FILES
 do
-  if [[ $f = *$CR2 ]]; then
-    FILENAME="${f/$CR2/''}"
-    echo "Found CR2: $FILENAME"
-    if [[ -f "$FILENAME.dng" ]]; then
-      echo "Has DNG: $FILENAME.dng"
+  if [[ $f = *$DNG ]]; then
+    FILENAME="${f/$DNG/''}"
+    if [[ -f "$FILENAME.cr2" ]]; then
+      echo "Found DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f"
     fi
   fi
 done
