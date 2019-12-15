@@ -31,8 +31,7 @@ do
       else
         STRING="Deleting DNG that matches existing CR2"
       fi
-      printf "\n$STRING\nCR2: $CR2_FILE\nDNG: $f"
+      printf "\n$STRING\nCR2: $CR2_FILE\nDNG: $f\n"
     fi
   fi
 done
-printf '\n'
