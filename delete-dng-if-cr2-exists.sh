@@ -1,12 +1,12 @@
 #!/bin/bash
-dry_run_flag=0
+delete_flag=0
 force_flag=0
 
 while getopts "df" opt; do
   case ${opt} in
     d )
-      # dry run
-      dry_run_flag=1
+      # delete dupes found
+      delete_flag=1
       ;;
     f )
       # force delete
@@ -31,7 +31,7 @@ do
     FILENAME="${f/$DNG/''}"
     CR2_FILE="$FILENAME.cr2"
     if [[ -f $CR2_FILE ]]; then
-      if [[ $dry_run_flag -eq 1 ]]; then
+      if [[ $delete_flag -eq 0 ]]; then
         MESSAGE="Found DNG and matching CR2"
       else
         MESSAGE="Deleting DNG that matches existing CR2"
@@ -42,9 +42,9 @@ do
         printf "\nWARNING - CR2 file is smaller than 10MB, it may not be valid! Will skip deletion unless forced"
       fi
 
-      if ( [[ ! $(stat --printf="%s" $CR2_FILE) < 10000000 ]] && [[ $dry_run_flag -eq 0 ]] ) || [[ $force_flag -eq 1 ]]; then
+      if ( [[ ! $(stat --printf="%s" $CR2_FILE) < 10000000 ]] && [[ $delete_flag -eq 1 ]] ) || [[ $force_flag -eq 1 ]]; then
         rm $f
-      elif [[ $dry_run_flag -eq 0 ]]; then
+      elif [[ $delete_flag -eq 1 ]]; then
         printf "\n skipped $f because it's CR2 was under 10MB"
       fi
 
