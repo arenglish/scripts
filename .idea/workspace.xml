@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efa4ffd0-42ed-4431-b2a7-bd34ce4d5c1b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/delete-dng-if-cr2-exists.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rename-move-photos.sh" beforeDir="false" afterPath="$PROJECT_DIR$/rename-move-photos.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +41,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575828679891</updated>
-      <workItem from="1575828681228" duration="7894000" />
+      <workItem from="1575828681228" duration="8531000" />
+      <workItem from="1576293379040" duration="8000" />
+      <workItem from="1576435423921" duration="249000" />
     </task>
     <servers />
   </component>
@@ -53,7 +55,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
