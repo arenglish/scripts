@@ -24,13 +24,14 @@ for f in $FILES
 do
   if [[ $f = *$DNG ]]; then
     FILENAME="${f/$DNG/''}"
-    if [[ -f "$FILENAME.cr2" ]]; then
+    CR2_FILE="$FILENAME.cr2"
+    if [[ -f $CR2_FILE ]]; then
       if [[ $dry_run_flag -eq 1 ]]; then
-        STRING=$'Found DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f'
+        MESSAGE="Found DNG and matching CR2"
       else
-        STRING=$'Deleting DNG that has CR2\nCR2: $FILENAME.cr2\nDNG: $f'
+        STRING="Deleting DNG that matches existing CR2"
       fi
-      echo "$STRING"
+      echo "$'\n'$STRING$'\n'CR2: $CR2_FILE$'\n'DNG: $f"
     fi
   fi
 done
