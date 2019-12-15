@@ -29,9 +29,9 @@ do
       if [[ $dry_run_flag -eq 1 ]]; then
         MESSAGE="Found DNG and matching CR2"
       else
-        STRING="Deleting DNG that matches existing CR2"
+        MESSAGE="Deleting DNG that matches existing CR2"
       fi
-      printf "\n$STRING\nCR2: $CR2_FILE\nDNG: $f\n"
+      printf "\n$MESSAGE\nCR2: $CR2_FILE\nDNG: $f\n"
     fi
   fi
 done
