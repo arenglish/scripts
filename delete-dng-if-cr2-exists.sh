@@ -31,7 +31,7 @@ do
       else
         MESSAGE="Deleting DNG that matches existing CR2"
       fi
-      printf "\n$MESSAGE\nCR2: $CR2_FILE\nDNG: $f\n"
+      printf "\n$MESSAGE\nCR2: ($(stat --printf="%s" $CR2_FILE) bytes) $CR2_FILE\nDNG: ($(stat --printf="%s" $f) bytes) $f\n"
 
       if [[ $dry_run_flag -eq 0 ]]; then
         rm $f
