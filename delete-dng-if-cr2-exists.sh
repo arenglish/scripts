@@ -24,7 +24,7 @@ shift $((OPTIND -1))
 
 TOTAL_SIZE=0
 TOTAL_COUNT=0
-FILES="*.dng **/*.dng"
+FILES="*.dng */**/*.dng"
 CR2=".cr2"
 DNG=".dng"
 for f in $FILES
