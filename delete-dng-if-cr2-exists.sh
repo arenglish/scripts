@@ -42,9 +42,9 @@ do
         printf "\nWARNING - CR2 file is smaller than 10MB, it may not be valid! Will skip deletion unless forced"
       fi
 
-      if ( [[ $(stat --printf="%s" $CR2_FILE) -gt 10000000 ]] && [[ $dry_run_flag -eq 0 ]] ) || [[ $force_flag -eq 1 ]]; then
+      if ( [[ ! $(stat --printf="%s" $CR2_FILE) < 10000000 ]] && [[ $dry_run_flag -eq 0 ]] ) || [[ $force_flag -eq 1 ]]; then
         rm $f
-      else
+      else if [[ $dry_run_flag -eq 1 ]]
         printf "\n skipped $f because it's CR2 was under 10MB"
       fi
 
