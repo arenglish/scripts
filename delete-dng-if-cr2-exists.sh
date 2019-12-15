@@ -44,7 +44,7 @@ do
 
       if ( [[ ! $(stat --printf="%s" $CR2_FILE) < 10000000 ]] && [[ $dry_run_flag -eq 0 ]] ) || [[ $force_flag -eq 1 ]]; then
         rm $f
-      else if [[ $dry_run_flag -eq 1 ]]
+      eliff [[ $dry_run_flag -eq 1 ]]
         printf "\n skipped $f because it's CR2 was under 10MB"
       fi
 
