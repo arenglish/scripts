@@ -22,6 +22,8 @@ while getopts "df" opt; do
 done
 shift $((OPTIND -1))
 
+TOTAL_SIZE=0
+TOTAL_COUNT=0
 FILES="*.dng **/*.dng"
 CR2=".cr2"
 DNG=".dng"
@@ -29,7 +31,11 @@ for f in $FILES
 do
   FILENAME="${f/$DNG/''}"
   CR2_FILE="$FILENAME.cr2"
+
   if [[ -f $CR2_FILE ]]; then
+    DNG_SIZE=$(stat --printf="%s" $f)
+    TOTAL_SIZE=$((DNG_SIZE + TOTAL_SIZE))
+    TOTAL_COUNT=$((TOTAL_COUNT + 1))
     if [[ $delete_flag -eq 0 ]]; then
       MESSAGE="Found DNG and matching CR2"
     else
@@ -50,3 +56,6 @@ do
     printf "\n"
   fi
 done
+
+echo "Number of DNGs with CR2s: $TOTAL_COUNT"
+echo "Total size of dupe DNGs: $TOTAL_SIZE"
