@@ -2,7 +2,7 @@
 dry_run_flag=0
 force_flag=0
 
-while getopts "d" opt; do
+while getopts "df" opt; do
   case ${opt} in
     d )
       # dry run
