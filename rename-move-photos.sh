@@ -52,6 +52,7 @@ while getopts "drnm:s:t:T:RM:D:c:" opt; do
       ;;
     R )
       rename_and_move_flag=1
+      TARGET="`eval echo ${OPTARG//>}`"
       ;;
     s )
       source_flag=1

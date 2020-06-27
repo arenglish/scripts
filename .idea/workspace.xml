@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efa4ffd0-42ed-4431-b2a7-bd34ce4d5c1b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rename-move-photos.sh" beforeDir="false" afterPath="$PROJECT_DIR$/rename-move-photos.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +44,7 @@
       <workItem from="1576293379040" duration="8000" />
       <workItem from="1576435423921" duration="11814000" />
       <workItem from="1578018639669" duration="9000" />
-      <workItem from="1593267526291" duration="671000" />
+      <workItem from="1593267526291" duration="813000" />
     </task>
     <servers />
   </component>
