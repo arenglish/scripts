@@ -82,7 +82,7 @@ while getopts "drnm:s:t:T:RM:D:c:" opt; do
 done
 shift $((OPTIND -1))
 
-if [[ $target_by_date_flag -eq 0 ]] && [[ $target_flag -eq 0 ]] && [[ $target_by_model_flag -eq 0 ]] && [[ $source_flag -eq 0 ]] && [[ $rename_flag -eq 0 ]] && [[ $model_flag -eq 0 ]] && [[ $model_force_flag -eq 0 ]] && [[ $date_flag -eq 0 ]]
+if [[ $target_by_date_flag -eq 0 ]] && [[ $rename_and_move_flag -eq 0 ]] && [[ $target_flag -eq 0 ]] && [[ $target_by_model_flag -eq 0 ]] && [[ $source_flag -eq 0 ]] && [[ $rename_flag -eq 0 ]] && [[ $model_flag -eq 0 ]] && [[ $model_force_flag -eq 0 ]] && [[ $date_flag -eq 0 ]]
 then
     echo "no options given"
     exit 1
