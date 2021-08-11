@@ -214,7 +214,7 @@ if [ $target_by_model_flag -eq 1 ]; then
     $FILETYPES \
     -if '(not $model)' \
     -r \
-    "$SOURCE"
+    "$SOURCE"F
 
     echo "moving images to $TARGET by model name"
     exiftool \

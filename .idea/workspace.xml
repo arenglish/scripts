@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efa4ffd0-42ed-4431-b2a7-bd34ce4d5c1b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/get-files-to-compress.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/powershell/manage-photos/move-photos.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/powershell/manage-photos/photos-transfer.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video-compress-2.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video-compress.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rename-move-photos.sh" beforeDir="false" afterPath="$PROJECT_DIR$/rename-move-photos.sh" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,23 +18,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/rename-move-photos.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/video-compress.ps1" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1Ui9iy9ttGe52it20vHDtrSp8CZ" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML&#10;Shell Script" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Modules/exiftool-photos" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\austi\OneDrive\Documents\WindowsPowerShell\Scripts\git-scripts\powershell\manage-photos" />
+      <recent name="C:\Users\austi\OneDrive\Documents\WindowsPowerShell\Scripts\git-scripts\powershell" />
+    </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -44,24 +59,58 @@
       <workItem from="1576293379040" duration="8000" />
       <workItem from="1576435423921" duration="11814000" />
       <workItem from="1578018639669" duration="9000" />
-      <workItem from="1593267526291" duration="813000" />
+      <workItem from="1593267526291" duration="2533000" />
+      <workItem from="1594299498464" duration="532000" />
+      <workItem from="1594436289746" duration="3554000" />
+      <workItem from="1594752927556" duration="7000" />
+      <workItem from="1595567837668" duration="956000" />
+      <workItem from="1597117819119" duration="600000" />
+      <workItem from="1604347205571" duration="652000" />
+      <workItem from="1604349102800" duration="599000" />
+      <workItem from="1605395755173" duration="1144000" />
+      <workItem from="1607214403910" duration="702000" />
+      <workItem from="1609526218123" duration="1188000" />
+      <workItem from="1609708010643" duration="637000" />
+      <workItem from="1609708696406" duration="2388000" />
+      <workItem from="1609981016747" duration="986000" />
+      <workItem from="1611003797476" duration="42000" />
+      <workItem from="1620529102812" duration="1016000" />
+      <workItem from="1620683207762" duration="449000" />
+      <workItem from="1621006283687" duration="1189000" />
+      <workItem from="1622779458359" duration="596000" />
+      <workItem from="1622815742076" duration="36000" />
+      <workItem from="1622846152676" duration="601000" />
+      <workItem from="1623176521397" duration="602000" />
+      <workItem from="1623383154993" duration="599000" />
+      <workItem from="1623384642632" duration="2375000" />
+      <workItem from="1623441423102" duration="111000" />
+      <workItem from="1623441794515" duration="1195000" />
+      <workItem from="1626133380555" duration="2000" />
+      <workItem from="1626195461352" duration="12000" />
+      <workItem from="1627319664725" duration="5982000" />
+      <workItem from="1627495100043" duration="3144000" />
+      <workItem from="1628094957929" duration="1121000" />
+      <workItem from="1628109062222" duration="5653000" />
+      <workItem from="1628116595317" duration="8000" />
+      <workItem from="1628193678164" duration="3000" />
+      <workItem from="1628452914998" duration="496000" />
+      <workItem from="1628537727710" duration="282000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
