@@ -8,9 +8,12 @@ out_file=$OUTPUT
 
 filename=$(basename "$in_file")
 echo "INPUT: $in_file \n filename: $filename" >> "$logfile"
-# Exit gracefully if $INPUT is not a CR2 file
-if [[ "${in_file,,}" != *.cr2 ]]; then
-    echo "Skipping: $in_file is not a CR2 file" >> "$logfile"
+
+FILE_TYPE_REGXP="CR2|cr2"
+
+# Exit gracefully if $INPUT is not desired file type
+if [[ ! "${in_file##*.}" =~ $FILE_TYPE_REGXP ]]; then
+    echo "Skipping: $in_file extension does not match $FILE_TYPE_REGXP" >> "$logfile"
     exit 0
 fi
 
