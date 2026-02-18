@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-logfile="/Users/austinenglish/hello.txt"
+logfile="/Users/austinenglish/digikam/batchlog.txt"
 echo "begin batch" > "$logfile"
 
 in_file=$INPUT
