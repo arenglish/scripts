@@ -33,7 +33,7 @@ echo "output file: $dng_file" >> "$logfile";
 
 if [ $EXIT_CODE -ne 0 ] || [ ! -f "$dng_file" ]; then
     echo "❌ Failed: $filename" >> "$logfile"
-    echo "$filename" >> "$FAILED_LIST"
+    echo "$in_file" >> "$FAILED_LIST"
     echo "$conversion_result" >> "$logfile"
 
     if [ $EXIT_CODE -ne 0 ]; then
